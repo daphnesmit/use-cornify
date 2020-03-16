@@ -7,24 +7,28 @@ And today: You can use it as a React Hook!
 ## 🎉 How to use the hook
 
 ```
-const { remove } = useCornify({ 
-  keys: ['ArrowUp', 'ArrowDown', 'Enter'], 
+const { remove } = useCornify({
+  keys: ['ArrowUp', 'ArrowDown', 'Enter'],
   addCupcakeButton: false,
+  addMagicalWords: false,
+  younicorns: '12,957,826,716,386'
 })
 
 // To manually remove all unicorns
 remove()
 ```
 
-
-## 🙌 Credits
-
-Big thanks to "Unicorns & Rainbows On-Demand http://www.cornify.com"
-
-## 🚧 Todo: Add summing Younicorns option to config
+## 🙈 Add summing Younicorns
 
 These days, you can create your own personal unicorns on Cornify. They are called Younicorns. If you want the Cornify script to show your Younicorns, you can provide a list of Younicorn IDs to the script, like this:
 
-`cornify.add({ younicorns: "12,957,826,716,386" });`
+`useCornify({ younicorns: "12,957,826,716,386" });`
 
 To find the IDs, navigate your browser to a Younicorn page and look at the URL. It will include a number - that's the ID.
+
+
+## 🙌 Credits
+
+Big thanks to:
+*Unicorns & Rainbows On-Demand*
+http://www.cornify.com

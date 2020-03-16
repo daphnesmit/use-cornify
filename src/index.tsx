@@ -19,6 +19,8 @@ import cornify from './cornify';
 interface UseCornifyProps {
   keys?: string[];
   showCupCakeButton?: boolean;
+  addMagicalWords?: boolean;
+  younicorns?: string;
 }
 
 interface UseCornify {
@@ -39,13 +41,15 @@ const defaultKeys = [
 ];
 
 export const useCornify = ({
-  showCupCakeButton = true,
   keys,
+  addMagicalWords = true,
+  showCupCakeButton = true,
+  younicorns,
 }: UseCornifyProps = {}): UseCornify => {
   const [code] = React.useState<string[]>(keys || defaultKeys);
 
   const initCornify = () => {
-    cornify.start();
+    cornify.start({ younicorns, addMagicalWords });
     cornify.add();
     if (showCupCakeButton) cornify.addCupcakeButton();
   };
