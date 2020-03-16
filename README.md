@@ -4,7 +4,7 @@ The Cornify script gives you the magical power to put unicorns and rainbows on a
 
 And today: You can use it as a React Hook!
 
-## 🙌 How to use the hook
+## 🎉 How to use the hook
 
 ```
 const { remove } = useCornify({ 
@@ -15,6 +15,11 @@ const { remove } = useCornify({
 // To manually remove all unicorns
 remove()
 ```
+
+
+## 🙌 Credits
+
+Big thanks to "Unicorns & Rainbows On-Demand http://www.cornify.com"
 
 ## 🚧 Todo: Add summing Younicorns option to config
 
