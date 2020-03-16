@@ -8,6 +8,16 @@
   "module": "dist/use-cornify.esm.js",
   "homepage": "https://github.com/daphnesmit/use-cornify#readme",
   "author": "Daphne Smit",
+  "keywords": [
+    "react",
+    "react-use",
+    "hook",
+    "hooks",
+    "unicorn",
+    "rainbows",
+    "cornify",
+    "daphne"
+  ],
   "contributors": [
     {
       "name": "Daphne Smit",
