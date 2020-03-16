@@ -6,7 +6,7 @@ And today: You can use it as a React Hook!
 
 ## 🎉 How to use the hook
 
-```
+```typescript
 const { remove } = useCornify({
   keys: ['ArrowUp', 'ArrowDown', 'Enter'],
   addCupcakeButton: false,
