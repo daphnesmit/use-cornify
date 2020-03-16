@@ -12,19 +12,19 @@
                                                                                       
 
 */
-import * as React from 'react';
-import useKonami from 'react-use-konami';
-import cornify from './cornify';
+import * as React from 'react'
+import useKonami from 'react-use-konami'
+import cornify from './cornify'
 
 interface UseCornifyProps {
-  keys?: string[];
-  showCupCakeButton?: boolean;
-  addMagicalWords?: boolean;
-  younicorns?: string;
+  keys?: string[]
+  showCupCakeButton?: boolean
+  addMagicalWords?: boolean
+  younicorns?: string
 }
 
 interface UseCornify {
-  remove: () => void;
+  remove: () => void
 }
 
 const defaultKeys = [
@@ -38,7 +38,7 @@ const defaultKeys = [
   'ArrowRight',
   'b',
   'a',
-];
+]
 
 export const useCornify = ({
   keys,
@@ -46,17 +46,17 @@ export const useCornify = ({
   showCupCakeButton = true,
   younicorns,
 }: UseCornifyProps = {}): UseCornify => {
-  const [code] = React.useState<string[]>(keys || defaultKeys);
+  const [code] = React.useState<string[]>(keys || defaultKeys)
 
   const initCornify = () => {
-    cornify.start({ younicorns, addMagicalWords });
-    cornify.add();
-    if (showCupCakeButton) cornify.addCupcakeButton();
-  };
+    cornify.start({ younicorns, addMagicalWords })
+    cornify.add()
+    if (showCupCakeButton) cornify.addCupcakeButton()
+  }
 
   useKonami(initCornify, {
     code,
-  });
+  })
 
-  return { remove: cornify.remove };
-};
+  return { remove: cornify.remove }
+}
