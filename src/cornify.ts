@@ -39,7 +39,7 @@ const cornify: Cornify = {
     // Prepare our lovely variables.
     const cornify_url = 'https://www.cornify.com/'
     let transform = 'translate(-50%, -50%)'
-    const showGrandUnicorn = cornifyCount == 15
+    const showGrandUnicorn = cornifyCount === 15
 
     // Create a container for our 'corn or 'bow.
     const div = document.createElement('div')
