@@ -30,5 +30,6 @@ To find the IDs, navigate your browser to a Younicorn page and look at the URL. 
 ## 🙌 Credits
 
 Big thanks to:
-*Unicorns & Rainbows On-Demand*
+
+__Unicorns & Rainbows On-Demand__ </br>
 http://www.cornify.com
