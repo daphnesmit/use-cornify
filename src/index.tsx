@@ -18,7 +18,7 @@ import cornify from './cornify'
 
 interface UseCornifyProps {
   keys?: string[]
-  showCupCakeButton?: boolean
+  addCupcakeButton?: boolean
   addMagicalWords?: boolean
   younicorns?: string
 }
@@ -43,7 +43,7 @@ const defaultKeys = [
 export const useCornify = ({
   keys,
   addMagicalWords = true,
-  showCupCakeButton = true,
+  addCupcakeButton = true,
   younicorns,
 }: UseCornifyProps = {}): UseCornify => {
   const [code] = React.useState<string[]>(keys || defaultKeys)
@@ -51,7 +51,7 @@ export const useCornify = ({
   const initCornify = () => {
     cornify.start({ younicorns, addMagicalWords })
     cornify.add()
-    if (showCupCakeButton) cornify.addCupcakeButton()
+    if (addCupcakeButton) cornify.addCupcakeButton()
   }
 
   useKonami(initCornify, {

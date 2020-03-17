@@ -17,7 +17,7 @@ And today: You can use it as a React Hook!
  */
 const { remove } = useCornify({
   keys: ['ArrowUp', 'ArrowDown', 'Enter'],
-  addCupcakeButton: false,
+  showCupCakeButton: false,
   addMagicalWords: false,
   younicorns: '12,957,826,716,386'
 })

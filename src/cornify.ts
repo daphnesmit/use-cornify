@@ -16,6 +16,7 @@ interface Cornify {
   getCookie: (cname: string) => string
   replace: () => void
   remove: () => void
+  removeMagicalWords: () => void
   addCupcakeButton: () => void
 }
 
@@ -256,7 +257,40 @@ const cornify: Cornify = {
       cupcakeButton.parentNode.removeChild(cupcakeButton)
     }
 
+    // Remove the css
+    const css = document.getElementById('__cornify_css')
+    if (css && css.parentNode) {
+      css.parentNode.removeChild(css)
+    }
+
+    // Remove all magical words
+    if (cornify.options.addMagicalWords) cornify.removeMagicalWords()
+
     window.removeEventListener('keydown', cornify.addKeyboardEvent)
+  },
+
+  removeMagicalWords() {
+    const magicalWords = [
+      'Happy',
+      'Sparkly',
+      'Glittery',
+      'Fun',
+      'Magical',
+      'Lovely',
+      'Cute',
+      'Charming',
+      'Amazing',
+      'Wonderful',
+    ]
+    const headings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'))
+    headings.forEach(heading => {
+      magicalWords.forEach(word => {
+        heading.innerHTML = heading.innerHTML
+          .split(word)
+          .join('')
+          .trim()
+      })
+    })
   },
 
   // Add the rainbow cupcake button to the page.
