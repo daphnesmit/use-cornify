@@ -169,7 +169,7 @@ export class Cornify {
     // When clicking 5 times:
     // - add a custom stylesheet to make the page look awesome
     // - add magical word when addMagicalWords option is true
-    if (this.count > 5) {
+    if (this.count === 5) {
       this.addCornifyCss()
       if (this.options.addMagicalWords) this.addMagicalWords()
     }
