@@ -79,12 +79,30 @@ export class Cornify {
   private createUnicornImage() {
     const img = document.createElement('img')
     img.style.opacity = '0'
+    // Add a nice hover wigggle.
     img.style.transition = 'all .1s linear'
     img.alt = 'A lovely unicorn or rainbow'
     img.onload = () => {
       img.style.opacity = '1'
     }
+    // img.style.transition = 'all .1s linear'
     return img
+  }
+
+  private onUnicornMouseOver(img: HTMLImageElement) {
+    const size = 1 + Math.round(Math.random() * 10) / 100
+    const angle = Math.round(Math.random() * 20 - 10)
+    const result = `rotate(${angle}deg) scale(${size},${size})`
+    img.style.transform = result
+    img.style.webkitTransform = result
+  }
+
+  private onUnicornMouseOut(img: HTMLImageElement) {
+    const size = 0.9 + Math.round(Math.random() * 10) / 100
+    const angle = Math.round(Math.random() * 6 - 3)
+    const result = `rotate(${angle}deg) scale(${size},${size})`
+    img.style.transform = result
+    img.style.webkitTransform = result
   }
 
   public add() {
@@ -93,8 +111,8 @@ export class Cornify {
 
     // Prepare our lovely variables.
     const cornify_url = 'https://www.cornify.com/'
-    let transform = 'translate(-50%, -50%)'
     const showGrandUnicorn = this.count === 15
+    let transform = 'translate(-50%, -50%)'
 
     // Create a container for our 'corn or 'bow.
     const container = this.createUnicornContainer()
@@ -127,11 +145,9 @@ export class Cornify {
     if (this.options && (this.options.y || this.options.younicorns)) {
       url += `&y=${this.options.y ? this.options.y : this.options.younicorns}`
 
-      if (Math.random() > 0.5) {
-        // Flip horizontally at random.
-        if (transform.length > 0) {
-          transform += ' scaleX(-1)'
-        }
+      // Flip horizontally at random.
+      if (Math.random() > 0.5 && transform.length > 0) {
+        transform += ' scaleX(-1)'
       }
     }
 
@@ -140,24 +156,8 @@ export class Cornify {
 
     img.setAttribute('src', url)
 
-    // Add a nice hover wigggle.
-    img.style.transition = 'all .1s linear'
-
-    container.onmouseover = () => {
-      const size = 1 + Math.round(Math.random() * 10) / 100
-      const angle = Math.round(Math.random() * 20 - 10)
-      const result = `rotate(${angle}deg) scale(${size},${size})`
-      img.style.transform = result
-      img.style.webkitTransform = result
-    }
-
-    container.onmouseout = () => {
-      const size = 0.9 + Math.round(Math.random() * 10) / 100
-      const angle = Math.round(Math.random() * 6 - 3)
-      const result = `rotate(${angle}deg) scale(${size},${size})`
-      img.style.transform = result
-      img.style.webkitTransform = result
-    }
+    container.onmouseover = () => this.onUnicornMouseOver(img)
+    container.onmouseout = () => this.onUnicornMouseOut(img)
 
     // Append our container DIV to the page.
     const body = document.getElementsByTagName('body')[0]
@@ -166,28 +166,39 @@ export class Cornify {
 
     // Hooray - now we have a sparkly unicorn (or rainbow) on the page. Another cornification well done. Congrats!
 
-    // When clicking 5 times, add a custom stylesheet to make the page look awesome.
+    // When clicking 5 times:
+    // - add a custom stylesheet to make the page look awesome
+    // - add magical word when addMagicalWords option is true
     if (this.count > 5) {
-      const cssExisting = document.getElementById('__cornify_css')
-
-      if (!cssExisting) {
-        const head = document.getElementsByTagName('head')[0]
-        const css = document.createElement('link')
-        css.id = '__cornify_css'
-        css.type = 'text/css'
-        css.rel = 'stylesheet'
-        css.href = 'https://www.cornify.com/css/cornify.css'
-        css.media = 'screen'
-        head.appendChild(css)
-      }
-      if (this.options.addMagicalWords) this.replace()
+      this.addCornifyCss()
+      if (this.options.addMagicalWords) this.addMagicalWords()
     }
 
     this.updateCount()
 
     // Trigger an event on the document so anyone could listen to that... for whatever reason..
+    this.dispatchAddEvent()
+  }
+
+  private dispatchAddEvent() {
     const event = new Event('cornify')
     document.dispatchEvent(event)
+  }
+
+  private createCountElement(id: string) {
+    const p = document.createElement('p')
+    p.id = id
+    p.style.position = 'fixed'
+    p.style.bottom = '5px'
+    p.style.left = '0px'
+    p.style.right = '0px'
+    p.style.zIndex = '1000000000'
+    p.style.color = '#ff00ff'
+    p.style.textAlign = 'center'
+    p.style.fontSize = '24px'
+    p.style.fontFamily = "'Comic Sans MS', 'Comic Sans', 'Marker Felt', serif" // Only the best!
+    p.style.textTransform = 'uppercase'
+    return p
   }
 
   // Tracks how often we cornified.
@@ -196,22 +207,14 @@ export class Cornify {
     let p = document.getElementById(id)
 
     if (p === null) {
-      p = document.createElement('p')
-      p.id = id
-      p.style.position = 'fixed'
-      p.style.bottom = '5px'
-      p.style.left = '0px'
-      p.style.right = '0px'
-      p.style.zIndex = '1000000000'
-      p.style.color = '#ff00ff'
-      p.style.textAlign = 'center'
-      p.style.fontSize = '24px'
-      p.style.fontFamily = "'Comic Sans MS', 'Comic Sans', 'Marker Felt', serif" // Only the best!
-      p.style.textTransform = 'uppercase'
+      p = this.createCountElement(id)
+
+      // Append element to DOM
       const body = document.getElementsByTagName('body')[0]
       body.appendChild(p)
     }
 
+    // Set content of counter
     if (this.count === 1) {
       p.innerHTML = 'You cornified!'
     } else {
@@ -231,24 +234,14 @@ export class Cornify {
 
   private getCookie(cname: string) {
     const name = `${cname}=`
-    const ca = document.cookie.split(';')
-    for (let i = 0; i < ca.length; i++) {
-      const c = ca[i].trim()
+    const cookies = document.cookie.split(';')
+    for (let i = 0; i < cookies.length; i++) {
+      const c = cookies[i].trim()
       if (c.indexOf(name) === 0) {
         return c.substring(name.length, c.length)
       }
     }
     return ''
-  }
-
-  // Adds happy words at the beginning of all headers on the page.
-  private replace() {
-    const headings = this.getHeadings()
-    headings.forEach(heading => {
-      heading.innerHTML = `${
-        this.magicalWords[Math.floor(Math.random() * this.magicalWords.length)]
-      } ${heading.innerHTML}`
-    })
   }
 
   // Clicking the rainbow cupcake button makes all the unicorns
@@ -296,6 +289,21 @@ export class Cornify {
     }
   }
 
+  private addCornifyCss() {
+    const cssExisting = document.getElementById('__cornify_css')
+
+    if (!cssExisting) {
+      const head = document.getElementsByTagName('head')[0]
+      const css = document.createElement('link')
+      css.id = '__cornify_css'
+      css.type = 'text/css'
+      css.rel = 'stylesheet'
+      css.href = 'https://www.cornify.com/css/cornify.css'
+      css.media = 'screen'
+      head.appendChild(css)
+    }
+  }
+
   private removeCornifyCss() {
     const css = document.getElementById('__cornify_css')
     if (css && css.parentNode) {
@@ -307,6 +315,17 @@ export class Cornify {
     return Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6'))
   }
 
+  // Adds happy words at the beginning of all headers on the page.
+  private addMagicalWords() {
+    const headings = this.getHeadings()
+    headings.forEach(heading => {
+      heading.innerHTML = `${
+        this.magicalWords[Math.floor(Math.random() * this.magicalWords.length)]
+      } ${heading.innerHTML}`
+    })
+  }
+
+  // Removes happy words at the beginning of all headers on the page.
   private removeMagicalWords() {
     const headings = this.getHeadings()
     headings.forEach(heading => {
@@ -359,7 +378,8 @@ export class Cornify {
       button.appendChild(image)
 
       // Append to Dom
-      document.getElementsByTagName('body')[0].appendChild(button)
+      const body = document.getElementsByTagName('body')[0]
+      body.appendChild(button)
     }
   }
 }

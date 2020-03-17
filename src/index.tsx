@@ -49,7 +49,6 @@ export const useCornify = ({
   const [code] = React.useState<string[]>(keys || defaultKeys)
   const cornify = new Cornify({ younicorns, addMagicalWords, addCupcakeButton })
 
-  console.log(cornify)
   const initCornify = React.useCallback(() => {
     cornify.start()
   }, [cornify])
