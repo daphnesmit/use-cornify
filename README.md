@@ -7,6 +7,14 @@ And today: You can use it as a React Hook!
 ## 🎉 How to use the hook
 
 ```typescript
+/**
+ * useCornify
+ * 
+ * @param {string[]} [keys=['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a']]
+ * @param {boolean} [addCupcakeButton=true] 
+ * @param {boolean} [addMagicalWords=true]
+ * @param {string} [younicorns]
+ */
 const { remove } = useCornify({
   keys: ['ArrowUp', 'ArrowDown', 'Enter'],
   addCupcakeButton: false,
