@@ -166,10 +166,10 @@ export class Cornify {
 
     // Hooray - now we have a sparkly unicorn (or rainbow) on the page. Another cornification well done. Congrats!
 
-    // When clicking 5 times:
-    // - add a custom stylesheet to make the page look awesome
+    // When clicking more than 5 times:
+    // - add a custom stylesheet to make the page look awesome (when not already there)
     // - add magical word when addMagicalWords option is true
-    if (this.count === 5) {
+    if (this.count > 5) {
       this.addCornifyCss()
       if (this.options.addMagicalWords) this.addMagicalWords()
     }
