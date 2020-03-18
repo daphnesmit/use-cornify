@@ -226,7 +226,7 @@ export class Cornify {
   }
 
   private setCookie(name: string, value: string, days: number) {
-    if (typeof window === undefined) return
+    if (typeof window === 'undefined') return
     const d = new Date()
     d.setTime(d.getTime() + days * 24 * 60 * 60 * 1000)
     const expires = `expires=${d.toUTCString()}`
@@ -234,7 +234,7 @@ export class Cornify {
   }
 
   private getCookie(cname: string) {
-    if (typeof window === undefined) return ''
+    if (typeof window === 'undefined') return ''
     const name = `${cname}=`
     const cookies = document.cookie.split(';')
     for (let i = 0; i < cookies.length; i++) {
