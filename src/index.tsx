@@ -14,7 +14,7 @@
 */
 import * as React from 'react'
 import useKonami from 'react-use-konami'
-import cornify from './cornify'
+import { Cornify } from './cornify'
 
 interface UseCornifyProps {
   keys?: string[]
@@ -47,16 +47,15 @@ export const useCornify = ({
   younicorns,
 }: UseCornifyProps = {}): UseCornify => {
   const [code] = React.useState<string[]>(keys || defaultKeys)
+  const cornify = new Cornify({ younicorns, addMagicalWords, addCupcakeButton })
 
-  const initCornify = () => {
-    cornify.start({ younicorns, addMagicalWords })
-    cornify.add()
-    if (addCupcakeButton) cornify.addCupcakeButton()
-  }
+  const initCornify = React.useCallback(() => {
+    cornify.start()
+  }, [cornify])
 
   useKonami(initCornify, {
     code,
   })
 
-  return { remove: cornify.remove }
+  return { remove: () => cornify.remove() }
 }
