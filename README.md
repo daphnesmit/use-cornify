@@ -1,5 +1,8 @@
 # 🦄 Unicorns and Rainbows on-demand with this React Hook!
 
+[![Build Status](https://travis-ci.com/daphnesmit/use-cornify.svg?branch=master)](https://travis-ci.com/daphnesmit/use-cornify)
+![GitHub issues](https://img.shields.io/github/issues/daphnesmit/use-cornify)
+
 The Cornify script gives you the magical power to put unicorns and rainbows on any website on the Internet. Since 2009, it has served over 400 million unicorns and rainbows. How wonderful indeed.
 
 And today: You can use it as a React Hook!

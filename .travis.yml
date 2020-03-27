@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - '12'
+
+branches:
+  only:
+  - master
+  - develop
+
+script:
+  - npm run test
+  - npm run build
+
+before_deploy:
+  - cd example 
+  - npm install 
+  - npm run build
+
+deploy:
+  provider: surge
+  project: ./example/dist/
+  domain: use-cornify.surge.sh
+  on:
+    branch: master
