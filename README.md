@@ -10,6 +10,7 @@ And today: You can use it as a React Hook!
 ## 🎉 How to use the hook
 
 Check out the [/example](https://github.com/daphnesmit/use-cornify/tree/master/example) directory for a full fletched example of the hook.
+A demo can be found here: [use-cornify.surge.sh](https://use-cornify.surge.sh)
 
 ```typescript
 /**
