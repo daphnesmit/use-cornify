@@ -11,7 +11,12 @@ const App = () => {
   })
 
   return (
-    <div style={{ margin: '20vmin auto', textAlign: 'center' }}>
+    <div
+      style={{
+        fontFamily: 'arial, verdana, sans-serif',
+        margin: '20vmin auto',
+        textAlign: 'center',
+      }}>
       <h1>Unicorns & Rainbows!</h1>
       <button onClick={() => remove()}>Remove Unicorns</button>
     </div>

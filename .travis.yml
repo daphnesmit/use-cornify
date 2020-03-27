@@ -11,7 +11,7 @@ before_deploy:
 
 deploy:
   provider: surge
-  project: ./example/dist/
+  project: ./dist/
   domain: use-cornify.surge.sh
   on:
     branch: master
