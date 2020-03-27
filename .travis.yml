@@ -15,5 +15,6 @@ deploy:
   provider: surge
   project: ./example/dist
   domain: use-cornify.surge.sh
+  skip_cleanup: true
   on:
     branch: master
