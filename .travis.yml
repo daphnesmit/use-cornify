@@ -7,9 +7,7 @@ script:
   - npm run build
 
 before_deploy:
-  - cd example 
-  - npm install 
-  - npm run build
+  - cd example && npm install && npm run build
 
 deploy:
   provider: surge
