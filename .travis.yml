@@ -9,7 +9,7 @@ branches:
 
 script:
   - npm run test
-  - npm run deploy
+  - npm run build
 
 before_deploy:
   - cd example 
