@@ -9,16 +9,12 @@ jobs:
       script:
         - npm run test
 
-    - stage: "Build example"
-      name: "Build example"
+    - stage: "Deploy"
+      name: "Deploy to surge.sh"
       before_deploy:
         - cd example 
         - npm install 
         - npm run build
-        - cd ../
-
-    - stage: "Deploy"
-      name: "Deploy to surge.sh"
       deploy:
         provider: surge
         project: ./example/dist
