@@ -3,14 +3,21 @@ language: node_js
 node_js:
   - '12'
 
+stages:
+  - test
+  - name: deploy
+    if: branch = master
+  - name: release
+    if: branch = master
+
 jobs:
   include:
-    - stage: "Test"             
+    - stage: test           
       name: "Run tests"            # names the first Tests stage job
       script:
         - npm run test
 
-    - stage: "Deploy"
+    - stage: deploy
       name: "Build example"
       before_deploy:
         - cd example 
@@ -22,10 +29,8 @@ jobs:
         project: ./example/dist
         domain: use-cornify.surge.sh
         skip_cleanup: true
-        on:
-          branch: master
 
-    - stage: "Release"
+    - stage: release
       name: "Release to NPM"
       deploy:
         provider: script
