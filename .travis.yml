@@ -11,10 +11,10 @@ jobs:
 
     - stage: "Build example"
       name: "Build example"
-      script:
-      - cd example 
-      - npm install 
-      - npm run build
+      before_deploy:
+        - cd example 
+        - npm install 
+        - npm run build
 
     - stage: "Deploy"
       name: "Deploy to surge.sh"
