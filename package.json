@@ -1,7 +1,7 @@
 {
   "name": "use-cornify",
   "description": "🦄 Put unicorns and rainbows on any website on the Internet with a single React Hook!",
-  "version": "0.1.11",
+  "version": "0.0.0-development",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -33,18 +33,22 @@
     "dist"
   ],
   "scripts": {
+    "commitmsg": "npx commitlint -e $GIT_PARAMS",
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
-    "prepare": "tsdx build"
+    "prepare": "tsdx build",
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "react": ">=16"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "tsdx lint",
+      "commit-msg": "npm run commitmsg",
+      "pre-push": "npm run test"
     }
   },
   "dependencies": {
@@ -60,6 +64,7 @@
     "react-dom": "^16.13.0",
     "tsdx": "^0.12.3",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "semantic-release": "^17.0.4"
   }
 }
