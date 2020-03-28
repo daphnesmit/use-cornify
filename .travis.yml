@@ -25,7 +25,7 @@ jobs:
         skip_cleanup: true
         on:
           branch: master
-          
+
     - stage: "Release"
       name: "Release to NPM"
       deploy:
@@ -33,3 +33,5 @@ jobs:
         skip_cleanup: true
         script:
           - npx semantic-release
+        on:
+          branch: master
