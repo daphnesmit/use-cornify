@@ -39,7 +39,7 @@
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "semantic-release": "semantic-release"
+    "commit": "commit"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -55,6 +55,10 @@
     "react-use-konami": "^1.0.13"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-angular": "^8.3.4",
+    "@commitlint/prompt": "^8.3.5",
+    "@commitlint/prompt-cli": "^8.3.5",
     "@types/jest": "^25.1.4",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
@@ -62,9 +66,9 @@
     "prettier": "^1.19.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "semantic-release": "^17.0.4",
     "tsdx": "^0.12.3",
     "tslib": "^1.11.1",
-    "typescript": "^3.8.3",
-    "semantic-release": "^17.0.4"
+    "typescript": "^3.8.3"
   }
 }
