@@ -2,19 +2,36 @@ language: node_js
 node_js:
   - '12'
 
-script:
-  - npm run test
-  - npm run build
+jobs:
+  include:
+    - stage: "Test"             
+      name: "Run tests"            # names the first Tests stage job
+      script:
+        - npm run test
 
-before_deploy:
-  - cd example 
-  - npm install 
-  - npm run build
+    - stage: "Build example"
+      name: "Build example"
+      script:
+      - cd example 
+      - npm install 
+      - npm run build
 
-deploy:
-  provider: surge
-  project: ./example/dist
-  domain: use-cornify.surge.sh
-  skip_cleanup: true
-  on:
-    branch: master
+    - stage: "Deploy"
+      name: "Deploy to surge.sh"
+      deploy:
+        provider: surge
+        project: ./example/dist
+        domain: use-cornify.surge.sh
+        skip_cleanup: true
+        on:
+          branch: master
+
+    - stage: "Release"
+      name: "Release to NPM"
+      deploy:
+        provider: script
+        skip_cleanup: true
+        script:
+          - npx semantic-release
+        on:
+          branch: master
