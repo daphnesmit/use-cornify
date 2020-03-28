@@ -34,12 +34,13 @@
   ],
   "scripts": {
     "commitmsg": "npx commitlint -e $GIT_PARAMS",
+    "commit": "commit",
     "start": "tsdx watch",
     "build": "tsdx build",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "commit": "commit"
+    "semantic-release": "semantic-release"
   },
   "peerDependencies": {
     "react": ">=16"
