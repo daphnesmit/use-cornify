@@ -4,17 +4,19 @@ node_js:
 
 jobs:
   include:
-    - stage: test             
+    - stage: "Test"             
       name: "Run tests"            # names the first Tests stage job
       script:
         - npm run test
-    - stage: before_deploy
+
+    - stage: "Build example"
       name: "Build example"
       script:
       - cd example 
       - npm install 
       - npm run build
-    - stage: deploy
+
+    - stage: "Deploy"
       name: "Deploy to surge.sh"
       deploy:
         provider: surge
@@ -23,7 +25,8 @@ jobs:
         skip_cleanup: true
         on:
           branch: master
-    - stage: release
+          
+    - stage: "Release"
       name: "Release to NPM"
       deploy:
         provider: script
