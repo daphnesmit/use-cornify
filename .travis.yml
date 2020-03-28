@@ -15,6 +15,7 @@ jobs:
         - cd example 
         - npm install 
         - npm run build
+        - cd ../
 
     - stage: "Deploy"
       name: "Deploy to surge.sh"
