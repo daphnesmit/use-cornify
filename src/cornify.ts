@@ -271,7 +271,7 @@ export class Cornify {
   private removeAllUnicorns() {
     const unicorns = Array.from(document.querySelectorAll('.__cornify_unicorn'))
     if (unicorns) {
-      unicorns.forEach(unicorn => {
+      unicorns.forEach((unicorn) => {
         unicorn.parentNode?.removeChild(unicorn)
       })
     }
@@ -320,7 +320,7 @@ export class Cornify {
   // Adds happy words at the beginning of all headers on the page.
   private addMagicalWords() {
     const headings = this.getHeadings()
-    headings.forEach(heading => {
+    headings.forEach((heading) => {
       heading.innerHTML = `${
         this.magicalWords[Math.floor(Math.random() * this.magicalWords.length)]
       } ${heading.innerHTML}`
@@ -330,12 +330,9 @@ export class Cornify {
   // Removes happy words at the beginning of all headers on the page.
   private removeMagicalWords() {
     const headings = this.getHeadings()
-    headings.forEach(heading => {
-      this.magicalWords.forEach(word => {
-        heading.innerHTML = heading.innerHTML
-          .split(word)
-          .join('')
-          .trim()
+    headings.forEach((heading) => {
+      this.magicalWords.forEach((word) => {
+        heading.innerHTML = heading.innerHTML.split(word).join('').trim()
       })
     })
   }

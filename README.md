@@ -1,4 +1,4 @@
-# 🦄 Unicorns and Rainbows on-demand with this React Hook!
+# 🦄 Unicorns and Rainbows Easter Egg with this React Hook!
 
 [![Build Status](https://travis-ci.org/daphnesmit/use-cornify.svg?branch=master)](https://travis-ci.org/daphnesmit/use-cornify)
 ![GitHub issues](https://img.shields.io/github/issues/daphnesmit/use-cornify)
@@ -13,6 +13,13 @@ And today: You can use it as a React Hook!
 Check out the [/example](https://github.com/daphnesmit/use-cornify/tree/master/example) directory for a full fletched example of the hook.
 A demo can be found here: [use-cornify.surge.sh](https://use-cornify.surge.sh)
 
+
+Start cornifying by adding the below code.
+Then start entering the Konami code and see the magic happen instantly!
+
+Pro Tip: Use as an easter egg on your next website!
+
+Konami code: ↑ ↑ ↓ ↓ ← → ← → b a
 ```typescript
 /**
  * useCornify
