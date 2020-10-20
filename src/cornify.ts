@@ -344,7 +344,7 @@ export class Cornify {
     button.style.position = 'fixed'
     button.style.top = '10px'
     button.style.right = '10px'
-    button.style.zIndex = '2147483641'
+    button.style.zIndex = '2147483640'
     button.setAttribute('aria-label', 'Hide unicorns and rainbows')
     return button
   }
