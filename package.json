@@ -39,7 +39,7 @@
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release --otp=800905"
   },
   "peerDependencies": {
     "react": ">=16"
