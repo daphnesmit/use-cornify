@@ -18,6 +18,7 @@ const App = () => {
         textAlign: 'center',
       }}>
       <h1>Unicorns & Rainbows!</h1>
+      <h2>Type konami code: ↑ ↑ ↓ ↓ ← → ← → B A</h2>
       <button onClick={() => remove()}>Remove Unicorns</button>
     </div>
   )

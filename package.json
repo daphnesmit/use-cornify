@@ -57,7 +57,7 @@
     ]
   },
   "peerDependencies": {
-    "react": ">=16"
+    "react": ">=17"
   },
   "husky": {
     "hooks": {
@@ -74,16 +74,16 @@
     "@commitlint/config-angular": "^11.0.0",
     "@commitlint/prompt": "^11.0.0",
     "@commitlint/prompt-cli": "^11.0.0",
-    "@types/jest": "^26.0.15",
-    "@types/react": "^16.9.53",
-    "@types/react-dom": "^16.9.8",
-    "husky": "^4.3.0",
-    "prettier": "^2.1.2",
+    "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "husky": "^4.3.8",
+    "prettier": "^2.2.1",
     "react": "^16.13.0",
-    "react-dom": "^16.14.0",
-    "semantic-release": "^17.2.1",
+    "react-dom": "^17.0.1",
+    "semantic-release": "^17.3.3",
     "tsdx": "^0.14.1",
-    "tslib": "^2.0.3",
-    "typescript": "^4.0.3"
+    "tslib": "^2.1.0",
+    "typescript": "^4.1.3"
   }
 }
